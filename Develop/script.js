@@ -1,6 +1,7 @@
 var generateBtn = document.querySelector("#generate");
 
-const specialCharacters = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~"
+const specialCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"]
+console.log(specialCharacters);
 
 // Write password to the #password input
 function writePassword() {
@@ -95,9 +96,8 @@ function generatePassword() {
   
     var randomPasswordGenerated = "";
   
-    // loop getting random characters
     for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-      var randomNumberPicked = Math.floor(Math.random() * 4);
+      var randomNumberPicked = Math.floor(Math.random() * 10);
   
       randomPasswordGenerated += randomNumberPicked;
   
