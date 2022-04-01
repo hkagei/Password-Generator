@@ -12,7 +12,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword() {
@@ -20,15 +19,13 @@ function generatePassword() {
     var numbers = confirm("Do you want numbers in your password?");
     var lowerCases = confirm("Do you want lowercases in your password?");
     var upperCases = confirm("Do you want uppercases in your password?");
-    var special = confirm("Do you want special characters in your password?")       
+    var special = confirm("Do you want special characters in your password?")
+  for (var i = 0; i <= passwordLength; i++)
     var minimumCount = 0;
+    var minimumNumbers = "";
+    var minimumLowerCases = "";
+    var minimumUpperCases = "";
+    var minimumSpecialCharacters = "";
       
-      
-        
-      
-        var minimumNumbers = "";
-        var minimumLowerCases = "";
-        var minimumUpperCases = "";
-        var minimumSpecialCharacters = "";
-      
-      }
+    }
+  generateBtn.addEventListener("click", writePassword);
