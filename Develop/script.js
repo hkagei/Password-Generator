@@ -51,24 +51,45 @@ function generatePassword() {
       minimumNumbers = functionArray.getNumbers();
       minimumCount++;
   
+    } else {
+      minimumLowerCases = functionArray.getLowerCases();
+      minimumUpperCases = functionArray.getUpperCases();
+      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+
     }
   
     if (lowerCases === true) {
       minimumLowerCases = functionArray.getLowerCases();
       minimumCount++;
   
+    } else {
+      minimumNumbers = functionArray.getNumbers();
+      minimumUpperCases = functionArray.getUpperCases();
+      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+
     }
   
     if (upperCases === true) {
       minimumUpperCases = functionArray.getUpperCases();
       minimumCount++;
   
+    } else {
+      minimumNumbers = functionArray.getNumbers();
+      minimumLowerCases = functionArray.getLowerCases();
+      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+
     }
   
     if (special === true) {
       minimumSpecialCharacters = functionArray.getSpecialCharacters();
       minimumCount++;
   
+    } else {
+      minimumLowerCases = functionArray.getLowerCases();
+      minimumUpperCases = functionArray.getUpperCases();
+      minimumNumbers = functionArray.getNumbers();
+
+
     }
   
   
