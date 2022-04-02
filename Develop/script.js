@@ -1,6 +1,6 @@
 var generateBtn = document.querySelector("#generate");
 
-const specialCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"]
+const specialCharacters = ["!", "#", "$", "%", "&", "*", "+", "?", "@"]
 
 
 // Write password to the #password input
