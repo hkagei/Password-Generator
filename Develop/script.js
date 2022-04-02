@@ -1,7 +1,7 @@
 var generateBtn = document.querySelector("#generate");
 
 const specialCharacters = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "^", "`", "{", "|", "}", "~"]
-console.log(specialCharacters);
+
 
 // Write password to the #password input
 function writePassword() {
@@ -17,100 +17,71 @@ function writePassword() {
 
 function generatePassword() {
     var passwordLength = prompt("Please enter the number of characters you want for you new password.  It must be more than 8 but less than 128.");
+   // make condition to recall "generatePassword" if numbers are out of bounds. (use "return" to stop function execution)
+   if(passwordLength >= 8 && passwordLength <= 128){
+  // do nothing
+   } else {
+     return generatePassword()
+   }
     var numbers = confirm("Do you want numbers in your password?");
     var lowerCases = confirm("Do you want lowercases in your password?");
     var upperCases = confirm("Do you want uppercases in your password?");
     var special = confirm("Do you want special characters in your password?")
-  for (var i = 0; i <= passwordLength; i++){
-    var minimumCount = 0;
-    var minimumNumbers = "";
-    var minimumLowerCases = "";
-    var minimumUpperCases = "";
-    var minimumSpecialCharacters = "";
-  }
-  document.getElementById("password").value = password;{
-    var functionArray = {
-      getNumbers: function() {
-        return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
-      },
   
-      getLowerCases: function() {
-        return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
-      },
+  document.getElementById("password").value = password;
   
-      getUpperCases: function() {
-        return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
-      },
-  
-      getSpecialCharacters: function() {
-        return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
-      }
-  
-  };
     
-    if (numbers === true) {
-      minimumNumbers = functionArray.getNumbers();
-      minimumCount++;
   
-    } else {
-      minimumLowerCases = functionArray.getLowerCases();
-      minimumUpperCases = functionArray.getUpperCases();
-      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+  
+    
+    var functionOBJ = {} //
+    // actions based on user choices (if true, allow criteria)
 
-    }
   
-    if (lowerCases === true) {
-      minimumLowerCases = functionArray.getLowerCases();
-      minimumCount++;
+  if(numbers) {
+    functionOBJ.numbers = function() {
+      return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+      } //
+  }
   
-    } else {
-      minimumNumbers = functionArray.getNumbers();
-      minimumUpperCases = functionArray.getUpperCases();
-      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+  if (lowerCases) {
+    functionOBJ.lowerCases = function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+    } //
+  }
 
-    }
-  
-    if (upperCases === true) {
-      minimumUpperCases = functionArray.getUpperCases();
-      minimumCount++;
-  
-    } else {
-      minimumNumbers = functionArray.getNumbers();
-      minimumLowerCases = functionArray.getLowerCases();
-      minimumSpecialCharacters = functionArray.getSpecialCharacters();
+  if (upperCases) {
+    functionOBJ.upperCases = function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+    } //
+  }
 
-    }
+  if (special) {
+    functionOBJ.special = function() {
+      return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+    } //
+  }
   
-    if (special === true) {
-      minimumSpecialCharacters = functionArray.getSpecialCharacters();
-      minimumCount++;
-  
-    } else {
-      minimumLowerCases = functionArray.getLowerCases();
-      minimumUpperCases = functionArray.getUpperCases();
-      minimumNumbers = functionArray.getNumbers();
-
-
-    }
+  var optionsArray = Object.keys(functionOBJ) // 
   
   
     var randomPasswordGenerated = "";
+    for (var i = 0; i <= passwordLength; i++){
+      var randomNumberPicked = Math.floor(Math.random() * optionsArray.length); //
+      var option = optionsArray[randomNumberPicked] //
+      
   
-    for (let i = 0; i < (parseInt(passwordLength) - minimumCount); i++) {
-      var randomNumberPicked = Math.floor(Math.random() * 10);
   
-      randomPasswordGenerated += randomNumberPicked;
-  
+      randomPasswordGenerated += functionOBJ[option](); //
     }
+    
   
     
-    randomPasswordGenerated += minimumNumbers;
-    randomPasswordGenerated += minimumLowerCases;
-    randomPasswordGenerated += minimumUpperCases;
-    randomPasswordGenerated += minimumSpecialCharacters;
+    
   
   
     return randomPasswordGenerated;
   
-  }}
+  
+}
   generateBtn.addEventListener("click", writePassword);
